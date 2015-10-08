@@ -1,0 +1,36 @@
+{
+  "name": "hubot-cne",
+  "version": "0.0.1",
+  "description": "A hubot script to get fuel price in Chile from cne api",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "mocha --compilers coffee:coffee-script/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgaticaq/hubot-cne.git"
+  },
+  "keywords": [
+    "cne",
+    "fuel",
+    "api",
+    "hubot",
+    "hubot-scripts"
+  ],
+  "author": "Leonardo Gatica <lgatica@protonmail.com> (https://about.me/lgatica)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lgaticaq/hubot-cne/issues"
+  },
+  "homepage": "https://github.com/lgaticaq/hubot-cne#readme",
+  "dependencies": {
+    "cne": "^0.3.1"
+  },
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "coffee-script": "^1.10.0",
+    "hubot-test-helper": "^1.0.0",
+    "mocha": "^2.3.3",
+    "nock": "^2.13.0"
+  }
+}
