@@ -1,46 +1,46 @@
 # Description:
-#   Te dice en donde venden la gasolina mas barata.
+#   Obtiene la estación de servicio con el precio mas barato de un combustible
 #
 # Dependencies:
-#   cne
+#   "cne": "^0.3.1"
 #
 # Commands:
-#   @pudu cne help
-#   @pudu cne obtener <tipo-de-combustible> <comuna>
-#   @pudu cne listar combustibles
-#   @pudu cne listar comunas
+#   hubot cne obtener <combustible> <comuna> - Obtiene la estación de servicio con el precio mas barato
+#   hubot cne listar combustibles - Obtiene el listado de combustibles disponibles
+#   hubot cne listar comunas - Obtiene el listado de comunas disponibles
 #
 # Author:
-#   @lgaticaq
+#   lgaticaq
 
 cne = require "cne"
 
 module.exports = (robot) ->
-  help = (msg) ->
-    msg.send "`pudu cne obtener <combustible> en <comuna>`"
-    msg.send "`pudu cne listar combustibles`"
-    msg.send "`pudu cne listar comunas`"
+  getFuelTypes = (res) ->
+    res.send "```#{cne.fuelTypes.join(", ")}```"
 
-  getFuelTypes = (msg) ->
-    msg.send "```#{cne.fuelTypes.join(", ")}```"
+  getCommunes = (res) ->
+    res.send "```#{cne.communes.join(", ")}```"
 
-  getCommunes = (msg) ->
-    msg.send "```#{cne.communes.join(", ")}```"
-
-  robot.respond /cne help/i, help
   robot.respond /cne listar combustibles/i, getFuelTypes
   robot.respond /cne listar comunas/i, getCommunes
 
-  robot.respond /cne obtener (\w+) en ([\w\sñáéíóúñÁÉÍÓÚÑ]+)/i, (msg) ->
-    fuelType = msg.match[1].trim()
+  robot.respond /cne obtener (\w+) en ([\w\sñáéíóúñÁÉÍÓÚÑ]+)/i, (res) ->
+    fuelType = res.match[1].trim()
+    commune = res.match[2].trim()
+    communes = (x.toLowerCase() for x in cne.communes)
+
     if fuelType not in cne.fuelTypes
-      msg.send "En el servicentro no tenemos #{fuelType} ni tampoco criptonita"
-      msg.send "Estos son los tipos de combustibles:"
-      msg.send "```#{fuelTypes.join(", ")}```"
+      res.send "El combustible *#{fuelType}* no esta disponible"
+      res.send "Estos son los combustibles disponibles:"
+      res.send "```#{cne.fuelTypes.join(", ")}```"
+    else if commune.toLowerCase() not in communes
+      res.send "La comuna *#{commune}* no esta disponible"
+      res.send "Estos son las comunas disponibles:"
+      res.send "```#{cne.communes.join(", ")}```"
     else
       options =
         fuelType: fuelType
-      options.commune = msg.match[2].trim()
+      options.commune = commune
       cne.get(options)
         .then (data) ->
           price = data.precio_por_combustible[fuelType]
@@ -49,6 +49,7 @@ module.exports = (robot) ->
           commune = data.nombre_comuna
           dist = data.nombre_distribuidor
           addr = "#{street} #{number} #{commune}"
-          msg.send "En #{dist} de #{addr} la venden a $#{price} CLP el litro"
+          res.send "En #{dist} de #{addr} la venden a $#{price} CLP el litro"
         .fail (err) ->
-          msg.send "No hay servicentro en #{options.commune}"
+          res.reply "ocurrio un error al consultar el combustible"
+          robot.emit "error", err, res
