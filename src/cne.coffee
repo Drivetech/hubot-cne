@@ -2,7 +2,7 @@
 #   Obtiene la estación de servicio con el precio mas barato de un combustible
 #
 # Dependencies:
-#   "cne": "^0.3.1"
+#   "cne": "^0.3.2"
 #
 # Commands:
 #   hubot cne obtener <combustible> <comuna> - Obtiene la estación de servicio con el precio mas barato
