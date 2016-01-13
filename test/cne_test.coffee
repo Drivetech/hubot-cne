@@ -3,7 +3,7 @@ expect = require("chai").expect
 nock = require("nock")
 cne = require("cne")
 
-helper = new Helper("./../src/cne.coffee")
+helper = new Helper("./../src/index.coffee")
 
 describe "cne", ->
   room = null
