@@ -51,7 +51,7 @@ describe "cne", ->
         .get("/api/listaInformacion/6M5jaVAzPS")
         .reply(200, data)
       room.user.say("alice", "hubot cne obtener #{fuelType} en #{valid}")
-      setTimeout(done, 100)
+      setTimeout(done, 500)
 
     it "should respond the address and price", ->
       expect(room.messages).to.eql([
@@ -66,7 +66,7 @@ describe "cne", ->
         .get("/api/listaInformacion/6M5jaVAzPS")
         .reply(200, data)
       room.user.say("alice", "hubot cne obtener #{fuelType} en #{invalid}")
-      setTimeout(done, 100)
+      setTimeout(done, 500)
 
     it "should respond a instructions for valid commune", ->
       expect(room.messages).to.eql([
@@ -83,7 +83,7 @@ describe "cne", ->
         .get("/api/listaInformacion/6M5jaVAzPS")
         .reply(200, data)
       room.user.say("alice", "hubot cne obtener #{invalidFuelType} en #{valid}")
-      setTimeout(done, 100)
+      setTimeout(done, 500)
 
     it "should respond a instructions for valid fuel type", ->
       expect(room.messages).to.eql([
@@ -100,7 +100,7 @@ describe "cne", ->
         .get("/api/listaInformacion/6M5jaVAzPS")
         .replyWithError("something awful happened")
       room.user.say("alice", "hubot cne obtener #{fuelType} en #{valid}")
-      setTimeout(done, 100)
+      setTimeout(done, 500)
 
     it "should respond a error", ->
       expect(room.messages).to.eql([
