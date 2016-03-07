@@ -20,6 +20,7 @@ add ["hubot-cne"] to your external-scripts.json.
 ## Examples
 
 ```bash
+hubot cne obtener gasolina_93
 hubot cne obtener gasolina_93 en santiago
 hubot cne listar combustibles
 hubot cne listar comunas
