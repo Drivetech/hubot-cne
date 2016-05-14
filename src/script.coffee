@@ -2,7 +2,7 @@
 #   Obtiene la estación de servicio con el precio mas barato de un combustible
 #
 # Dependencies:
-#   "cne": "^0.3.2"
+#   "cne": "^1.0.0"
 #
 # Commands:
 #   hubot cne obtener <combustible> - Obtiene la estación de servicio con el precio mas barato
@@ -51,6 +51,6 @@ module.exports = (robot) ->
           dist = data.nombre_distribuidor
           addr = "#{street} #{number} #{commune}"
           res.send "En #{dist} de #{addr} la venden a $#{price} CLP el litro"
-        .fail (err) ->
+        .catch (err) ->
           res.reply "ocurrio un error al consultar el combustible"
           robot.emit "error", err
