@@ -39,6 +39,6 @@
     "hubot-test-helper": "^1.4.4",
     "istanbul": "^0.4.3",
     "mocha": "^3.0.0",
-    "nock": "^9.0.0"
+    "nock": "^9.0.2"
   }
 }
