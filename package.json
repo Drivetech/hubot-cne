@@ -1,6 +1,6 @@
 {
   "name": "hubot-cne",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A hubot script to get fuel price in Chile from cne api",
   "main": "src",
   "scripts": {
