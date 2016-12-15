@@ -4,11 +4,13 @@
 # Dependencies:
 #   "cne": "^1.0.0"
 #
+# coffeelint: disable=max_line_length
 # Commands:
 #   hubot cne obtener <combustible> - Obtiene la estación de servicio con el precio mas barato
 #   hubot cne obtener <combustible> en <comuna> - Obtiene la estación de servicio con el precio mas barato en una determinada comuna
 #   hubot cne listar combustibles - Obtiene el listado de combustibles disponibles
 #   hubot cne listar comunas - Obtiene el listado de comunas disponibles
+# coffeelint: enable=max_line_length
 #
 # Author:
 #   lgaticaq
