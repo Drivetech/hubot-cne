@@ -46,7 +46,7 @@
     "generate-changelog": "1.4.0",
     "hubot-test-helper": "1.7.0",
     "istanbul": "0.4.5",
-    "mocha": "3.5.2",
+    "mocha": "3.5.3",
     "proxyquire": "1.8.0"
   }
 }
