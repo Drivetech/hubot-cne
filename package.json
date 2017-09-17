@@ -4,17 +4,17 @@
   "description": "A hubot script to get fuel price in Chile from cne api",
   "main": "src",
   "scripts": {
-    "pretest": "coffeelint src test",
-    "test": "mocha --compilers coffee:coffee-script/register --require coffee-coverage/register-istanbul",
+    "lint": "eslint --fix 'src/**/*.js' 'test/**/*.js'",
+    "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
+    "pretest": "npm run lint -s && npm run format -s",
+    "test": "mocha",
     "posttest": "istanbul report text-summary lcov",
-    "coveralls": "coveralls < coverage/lcov.info",
-    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info",
     "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
     "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags && npm publish",
     "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags && npm publish"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "repository": {
     "type": "git",
@@ -38,15 +38,32 @@
   },
   "devDependencies": {
     "chai": "4.1.2",
-    "codeclimate-test-reporter": "0.5.0",
-    "coffee-coverage": "2.0.1",
     "coffee-script": "1.12.7",
-    "coffeelint": "1.16.0",
-    "coveralls": "2.13.1",
+    "eslint": "4.7.0",
+    "eslint-config-standard": "10.2.1",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-node": "5.1.1",
+    "eslint-plugin-promise": "3.5.0",
+    "eslint-plugin-standard": "3.0.1",
     "generate-changelog": "1.4.0",
     "hubot-test-helper": "1.7.0",
     "istanbul": "0.4.5",
     "mocha": "3.5.3",
+    "prettier-standard": "6.0.0",
     "proxyquire": "1.8.0"
-  }
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "mocha": true
+    },
+    "rules": {
+      "no-console": [
+        "error"
+      ]
+    }
+  },
+  "eslintIgnore": [
+    "coverage"
+  ]
 }
