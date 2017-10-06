@@ -48,7 +48,7 @@
     "generate-changelog": "1.5.0",
     "hubot-test-helper": "1.7.0",
     "istanbul": "0.4.5",
-    "mocha": "4.0.0",
+    "mocha": "4.0.1",
     "prettier-standard": "7.0.1",
     "proxyquire": "1.8.0"
   },
