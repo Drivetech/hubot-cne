@@ -45,7 +45,7 @@
     "eslint-plugin-node": "5.2.1",
     "eslint-plugin-promise": "3.6.0",
     "eslint-plugin-standard": "3.0.1",
-    "generate-changelog": "1.6.0",
+    "generate-changelog": "1.7.0",
     "hubot-test-helper": "1.8.1",
     "istanbul": "0.4.5",
     "mocha": "4.0.1",
